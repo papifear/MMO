@@ -25,7 +25,7 @@ func _ready():
 	_network_client.connect("error", _handle_network_error)
 	_network_client.connect("data", _handle_network_data)
 	add_child(_network_client)
-	_network_client.connect_to_server("192.168.0.14", 8081)
+	_network_client.connect_to_server("127.0.0.1", 8081)
 	
 	_login_screen.connect("login", _handle_login_button)
 	_login_screen.connect("register", _handle_register_button)
