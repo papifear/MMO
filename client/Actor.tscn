@@ -16,4 +16,3 @@ offset_bottom = 102.0
 horizontal_alignment = 1
 
 [node name="Avatar" parent="CharacterBody2D" instance=ExtResource("2_fs1wh")]
-region_rect = Rect2(72, 0, 72, 128)

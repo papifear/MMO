@@ -2,12 +2,16 @@ extends "res://model.gd"
 
 @onready var body: CharacterBody2D = get_node("CharacterBody2D")
 @onready var label: Label = get_node("CharacterBody2D/Label")
-@onready var sprite: Sprite2D = get_node("CharacterBody2D/Avatar")
-@onready var animation_player: AnimationPlayer = get_node("CharacterBody2D/Avatar/AnimationPlayer")
+@onready var animation_player: AnimationPlayer = get_node("CharacterBody2D/Avatar/CompositeSprites/AnimationPlayer")
+
+@onready var bodySprite = get_node("CharacterBody2D/Avatar/CompositeSprites/Body")
+@onready var faceSprite = get_node("CharacterBody2D/Avatar/CompositeSprites/Face")
+@onready var hairSprite = get_node("CharacterBody2D/Avatar/CompositeSprites/Hair")
+
+const composite_sprites = preload("res://Sprites/CompositeSprites.gd")
 
 var server_position: Vector2
 var actor_name: String
-#var velocity: Vector2 = Vector2.ZERO
 
 var is_player: bool = false
 var _player_target: Vector2
@@ -25,8 +29,10 @@ func update(new_model: Dictionary):
 	super(new_model)
 	
 	# Set the correct sprite for the actor's avatar ID
-	if new_model.has("avatar_id"):
-		sprite.set_region_rect(Rect2(new_model["avatar_id"] * 72, 0, 72, 128))
+	if new_model.has("face_id") and new_model.has("hair_id") and new_model.has("hairColor_id"):
+		faceSprite.texture = composite_sprites.face_spritesheet[int(new_model["face_id"])]
+		hairSprite.texture = composite_sprites.hair_spritesheet[int(new_model["hair_id"])]
+		hairSprite.self_modulate = composite_sprites.hairColors[int(new_model["hairColor_id"])]
 	
 	if new_model.has("instanced_entity"):
 		var ientity = new_model["instanced_entity"]

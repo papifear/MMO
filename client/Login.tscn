@@ -18,7 +18,7 @@ script = ExtResource("1_de34e")
 anchors_preset = -1
 anchor_left = 0.2
 anchor_top = 0.4
-anchor_right = 0.8
+anchor_right = 0.496
 anchor_bottom = 0.6
 offset_bottom = 2.39999
 
@@ -58,48 +58,109 @@ text = "Register"
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.4
-anchor_top = 0.25
-anchor_right = 0.6
-anchor_bottom = 0.33
+anchor_left = 0.562
+anchor_top = 0.275
+anchor_right = 0.762
+anchor_bottom = 0.751
 offset_bottom = 30.0
 
 [node name="Control" type="Control" parent="CanvasLayer/Panel"]
 layout_mode = 1
-anchor_left = 0.5
-anchor_top = -0.8
+anchor_left = 0.48
+anchor_top = -0.2
 anchor_right = 0.5
 anchor_bottom = 1.0
 
 [node name="Avatar" parent="CanvasLayer/Panel/Control" instance=ExtResource("2_vdmhy")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+[node name="FaceContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
-anchor_top = 0.1
+anchor_top = 0.066
 anchor_right = 0.9
-anchor_bottom = 0.9
+anchor_bottom = 0.258
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="FaceLabel" type="Label" parent="CanvasLayer/Panel/FaceContainer"]
 layout_mode = 2
-text = "Choose your gender"
+text = "Face:"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="FaceButtonContainer" type="HBoxContainer" parent="CanvasLayer/Panel/FaceContainer"]
 layout_mode = 2
 
-[node name="Button_Left" type="Button" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer"]
+[node name="ButtonLeftFace" type="Button" parent="CanvasLayer/Panel/FaceContainer/FaceButtonContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "<"
 
-[node name="Button_Ok" type="Button" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "OK"
-
-[node name="Button_Right" type="Button" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer"]
+[node name="ButtonRightFace" type="Button" parent="CanvasLayer/Panel/FaceContainer/FaceButtonContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = ">"
+
+[node name="HairContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.258
+anchor_right = 0.9
+anchor_bottom = 0.451
+
+[node name="HairLabel" type="Label" parent="CanvasLayer/Panel/HairContainer"]
+layout_mode = 2
+text = "Hair"
+horizontal_alignment = 1
+
+[node name="HairButtonContainer" type="HBoxContainer" parent="CanvasLayer/Panel/HairContainer"]
+layout_mode = 2
+
+[node name="ButtonLeftHair" type="Button" parent="CanvasLayer/Panel/HairContainer/HairButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "<"
+
+[node name="ButtonRightHair" type="Button" parent="CanvasLayer/Panel/HairContainer/HairButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = ">"
+
+[node name="HairColorContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.453
+anchor_right = 0.9
+anchor_bottom = 0.65
+
+[node name="HairColorLabel" type="Label" parent="CanvasLayer/Panel/HairColorContainer"]
+layout_mode = 2
+text = "Hair Color"
+horizontal_alignment = 1
+
+[node name="HairColorButtonContainer" type="HBoxContainer" parent="CanvasLayer/Panel/HairColorContainer"]
+layout_mode = 2
+
+[node name="ButtonLeftHairColor" type="Button" parent="CanvasLayer/Panel/HairColorContainer/HairColorButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "<"
+
+[node name="ButtonRightHairColor" type="Button" parent="CanvasLayer/Panel/HairColorContainer/HairColorButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = ">"
+
+[node name="ButtonOk" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -31.0
+offset_right = 24.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Okay"

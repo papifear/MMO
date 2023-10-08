@@ -52,4 +52,6 @@ class InstancedEntity(models.Model):
 class Actor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     instanced_entity = models.OneToOneField(InstancedEntity, on_delete=models.CASCADE)
-    avatar_id = models.IntegerField (default=0)
+    face_id = models.IntegerField (default=0)
+    hair_id = models.IntegerField (default=0)
+    hairColor_id = models.IntegerField (default=0)

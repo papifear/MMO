@@ -8,7 +8,7 @@ const Actor = preload("res://Actor.tscn")
 
 @onready var _login_screen = get_node("Login")
 @onready var _network_client = NetworkClient.new()
-## var state: FuncRef
+
 var state
 var _chatbox = null
 var _username: String
@@ -16,10 +16,6 @@ var _player_actor = null
 var _actors: Dictionary = {}
 
 func _ready():
-	###_network_client.connect("connected", self, "_handle_client_connected")
-	###_network_client.connect("disconnected", self, "_handle_client_disconnected")
-	###_network_client.connect("error", self, "_handle_network_error")
-	###_network_client.connect("data", self, "_handle_network_data")
 	_network_client.connect("connected", _handle_client_connected)
 	_network_client.connect("disconnected", _handle_client_disconnected)
 	_network_client.connect("error", _handle_network_error)
@@ -88,7 +84,6 @@ func _update_actor(model_id: int, model_data: Dictionary):
 		add_child(new_actor)
 
 func _enter_game():
-	#state.call("PLAY")
 	state = Callable(self, "PLAY")
 	
 	# Remove the login screen
@@ -100,18 +95,16 @@ func _enter_game():
 	add_child(_chatbox)
 
 func _handle_login_button(username: String, password: String):
-	#state.call("LOGIN")
 	_username = username
 	state = Callable(self, "LOGIN")
 	
 	var p: Packet = Packet.new("Login", [username, password])
 	_network_client.send_packet(p)
 	
-func _handle_register_button(username: String, password: String, avatar_id: int):
-	#state.call("REGISTER")
+func _handle_register_button(username: String, password: String, face_id: int, hair_id: int, hairColor_id: int):
 	state = Callable(self, "REGISTER")
 	
-	var p: Packet = Packet.new("Register", [username, password, avatar_id])
+	var p: Packet = Packet.new("Register", [username, password, face_id, hair_id, hairColor_id])
 	_network_client.send_packet(p)
 
 func send_chat(text: String):

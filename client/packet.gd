@@ -17,7 +17,6 @@ func tostring() -> String:
 static func json_to_action_payloads(json_str: String) -> Array:
 	var action: String
 	var payloads: Array = []
-	### var obj_dict: Dictionary = JSON.parse(json_str).result
 	var json = JSON.new()
 	var obj_dict: Dictionary
 	var error = json.parse(json_str)
